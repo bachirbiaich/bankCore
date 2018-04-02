@@ -1,0 +1,11 @@
+D:\asp_workspaces\bankCore\BankCore\bin\Debug\netcoreapp2.0\BankCore.deps.json
+D:\asp_workspaces\bankCore\BankCore\bin\Debug\netcoreapp2.0\BankCore.runtimeconfig.json
+D:\asp_workspaces\bankCore\BankCore\bin\Debug\netcoreapp2.0\BankCore.runtimeconfig.dev.json
+D:\asp_workspaces\bankCore\BankCore\bin\Debug\netcoreapp2.0\BankCore.dll
+D:\asp_workspaces\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.csprojResolveAssemblyReference.cache
+D:\asp_workspaces\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.csproj.CoreCompileInputs.cache
+D:\asp_workspaces\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.AssemblyInfoInputs.cache
+D:\asp_workspaces\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.AssemblyInfo.cs
+D:\asp_workspaces\bankCore\BankCore\bin\Debug\netcoreapp2.0\BankCore.pdb
+D:\asp_workspaces\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.dll
+D:\asp_workspaces\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.pdb
