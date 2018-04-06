@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankCore.Models
 {
-    public class User
+    public class User : ModelBase
     {
         [StringLength(50, ErrorMessage = "Le nom doit contenir {1} caractères maximum.")]
         [Required(ErrorMessageResourceName = "required")]

@@ -13119,7 +13119,8 @@
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.2"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.2",
+      "microsoft.entityframeworkcore.sqlserver >= 2.0.1"
     ]
   },
   "packageFolders": {
@@ -13178,6 +13179,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.0.2, )"
+          },
+          "microsoft.entityframeworkcore.sqlserver": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           }
         },
         "imports": [

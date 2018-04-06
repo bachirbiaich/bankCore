@@ -20,7 +20,7 @@ namespace BankCore.Controllers
             new User { lastName="Frfr", firstName="Frfr", email="fr@fr.fr", password="frfr" }
         };
 
-        [HttpPost("/token")]
+        [HttpPost("/login")]
         public async Task Token()
         {
             var lastName = Request.Form["lastName"];
@@ -50,7 +50,7 @@ namespace BankCore.Controllers
             var response = new
             {
                 access_token = encodedJwt,
-                username = identity.Name
+                email = identity.Name
             };
 
             // Response sérialisation
