@@ -7,27 +7,21 @@ using System.Threading.Tasks;
 
 namespace BankCore.Models
 {
-    public class Virement : ModelBase
+    public class Mouvement : ModelBase
     {
+        [ForeignKey("compte_id")]
+        public virtual Compte compte { get; set; }
 
         [Required]
-        public string recipient_iban { get; set; }
-
-        [ForeignKey("sender_id")]
-        public virtual User sender { get; set; }
-
-        [Required]
-        public Guid? sender_id { get; set; }
+        public Guid? compte_id { get; set; }
 
         [Required]
         public double montant { get; set; }
 
         [Required]
-        public DateTime date { get; set; }
+        public string libelle { get; set; }
 
         [Required]
-        public bool done { get; set; }
-
-
+        public DateTime date { get; set; }
     }
 }

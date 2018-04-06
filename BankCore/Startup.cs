@@ -52,7 +52,7 @@ namespace BankCore
                                     ValidateIssuerSigningKey = true,
                     };
                 });
-
+            services.AddCors();
             services.AddMvc();
 
            // services.AddDbContext<BankCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankCoreContext")));  
@@ -67,7 +67,7 @@ namespace BankCore
             }
 
             app.UseAuthentication();  // Auth call
-
+            app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
             //DbInitializer.Initialize(context); // init DbIniti pour ajouter les données en bruts
         }

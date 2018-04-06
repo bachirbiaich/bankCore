@@ -10,15 +10,16 @@ namespace BankCore.Models
     public class User : ModelBase
     {
         [StringLength(50, ErrorMessage = "Le nom doit contenir {1} caractères maximum.")]
-        [Required(ErrorMessageResourceName = "required")]
+        [Required]
         public string firstName { get; set; }
+
         [StringLength(50, ErrorMessage = "Le nom doit contenir {1} caractères maximum.")]
-        [Required(ErrorMessageResourceName = "required")]
+        [Required]
         public string lastName { get; set; }
 
         [Key]
         [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessageResourceName = "required")]
+        [Required]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
@@ -26,7 +27,7 @@ namespace BankCore.Models
         public string email { get; set; }
 
         [DataType(DataType.Password)]
-        [Required(ErrorMessageResourceName = "required")]
+        [Required]
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le mot de passe doit être composé de 8 chiffres")]
         public string password { get; set; }
 
