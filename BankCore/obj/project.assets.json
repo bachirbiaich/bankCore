@@ -6434,7 +6434,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.SqlServer/2.0.1": {
-      "sha512": "+UnKJpkVpuNWRjF3BWSzbkQLL7gxY18Hnh5uXmlagO4Ua8BstqWIJaIUV+Ps2rw/2n62UPTQQV9RQWggV7OH9Q==",
+      "sha512": "Z2hELfVPKdRbW4YbGrKlVImyZ+/UzoHeYuEjX9BqxzAIaENvKw0oxcTIp9rh3YzsqUTk1OnaJafpz5KUQoZeww==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.sqlserver/2.0.1",
       "files": [
@@ -13124,7 +13124,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bachir\\.nuget\\packages\\": {},
+    "C:\\Users\\Lexx-6680\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13133,17 +13133,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bachir\\Documents\\GitHub\\bankCore\\BankCore\\BankCore.csproj",
+      "projectUniqueName": "D:\\asp_workspaces\\bankCore\\BankCore\\BankCore.csproj",
       "projectName": "BankCore",
-      "projectPath": "C:\\Users\\Bachir\\Documents\\GitHub\\bankCore\\BankCore\\BankCore.csproj",
-      "packagesPath": "C:\\Users\\Bachir\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bachir\\Documents\\GitHub\\bankCore\\BankCore\\obj\\",
+      "projectPath": "D:\\asp_workspaces\\bankCore\\BankCore\\BankCore.csproj",
+      "packagesPath": "C:\\Users\\Lexx-6680\\.nuget\\packages\\",
+      "outputPath": "D:\\asp_workspaces\\bankCore\\BankCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bachir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lexx-6680\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
