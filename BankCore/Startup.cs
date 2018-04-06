@@ -12,7 +12,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
-using BankCore.Data;
 
 namespace BankCore
 {
@@ -55,11 +54,11 @@ namespace BankCore
             services.AddCors();
             services.AddMvc();
 
-           // services.AddDbContext<BankCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankCoreContext")));  
+           services.AddDbContext<BankCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankCoreContext")));  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)  // ajout dans Configure => BankCoreContext context
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -67,9 +66,12 @@ namespace BankCore
             }
 
             app.UseAuthentication();  // Auth call
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors(builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
             app.UseMvc();
-            //DbInitializer.Initialize(context); // init DbIniti pour ajouter les données en bruts
         }
     }
 }

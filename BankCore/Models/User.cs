@@ -1,4 +1,4 @@
-﻿using BankAPI.Models;
+﻿using BankCore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,8 +16,7 @@ namespace BankCore.Models
         [StringLength(50, ErrorMessage = "Le nom doit contenir {1} caractères maximum.")]
         [Required]
         public string lastName { get; set; }
-
-        [Key]
+    
         [DataType(DataType.EmailAddress)]
         [Required]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +

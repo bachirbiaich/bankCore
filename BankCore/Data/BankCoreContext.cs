@@ -13,8 +13,15 @@ namespace BankCore.Models
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(x => x.email).IsUnique();
+        }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Compte> Comptes { get; set; }
+        public DbSet<Mouvement> Mouvements { get; set; }
+        public DbSet<Virement> Virements { get; set; }
 
-   
     }
 }
