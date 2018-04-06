@@ -14,7 +14,7 @@ namespace BankCore.Models
         public Guid _id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         public DateTime? DeletedAt { get; set; }
 
