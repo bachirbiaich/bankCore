@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BankCore.Controllers
 {
@@ -21,6 +22,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Virements
+        [Authorize]
         [HttpGet]
         public IEnumerable<Virement> GetVirements()
         {
@@ -28,6 +30,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Virements/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVirement([FromRoute] Guid id)
         {
@@ -47,6 +50,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Virements/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVirement([FromRoute] Guid id, [FromBody] Virement virement)
         {
@@ -82,6 +86,7 @@ namespace BankCore.Controllers
         }
 
         // POST: api/Virements
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostVirement([FromBody] Virement virement)
         {
@@ -97,6 +102,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Virements/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVirement([FromRoute] Guid id)
         {

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BankCore.Controllers
 {
@@ -21,6 +22,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Comptes
+        [Authorize]
         [HttpGet]
         public IEnumerable<Compte> GetComptes()
         {
@@ -28,6 +30,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Comptes/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCompte([FromRoute] Guid id)
         {
@@ -47,6 +50,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Comptes/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCompte([FromRoute] Guid id, [FromBody] Compte compte)
         {
@@ -82,6 +86,7 @@ namespace BankCore.Controllers
         }
 
         // POST: api/Comptes
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostCompte([FromBody] Compte compte)
         {
@@ -97,6 +102,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Comptes/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompte([FromRoute] Guid id)
         {

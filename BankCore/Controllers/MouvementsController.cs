@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace BankCore.Controllers
 {
@@ -22,6 +22,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Mouvements
+        [Authorize]
         [HttpGet]
         public IEnumerable<Mouvement> GetMouvements([FromQuery] Guid? compte_id)
         {
@@ -32,6 +33,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Mouvements/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMouvement([FromRoute] Guid id)
         {
@@ -51,6 +53,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Mouvements/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMouvement([FromRoute] Guid id, [FromBody] Mouvement mouvement)
         {
@@ -86,6 +89,7 @@ namespace BankCore.Controllers
         }
 
         // POST: api/Mouvements
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostMouvement([FromBody] Mouvement mouvement)
         {
@@ -101,6 +105,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Mouvements/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMouvement([FromRoute] Guid id)
         {
