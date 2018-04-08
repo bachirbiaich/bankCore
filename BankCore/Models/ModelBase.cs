@@ -13,11 +13,17 @@ namespace BankCore.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid _id { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? UpdatedAt { get; set; }
 
         public DateTime? DeletedAt { get; set; }
 
         public bool Deleted { get; set; }
+
+
+        public ModelBase()
+        {
+            UpdatedAt = DateTime.UtcNow;
+        }
     }
 }
