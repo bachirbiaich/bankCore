@@ -30,5 +30,6 @@ namespace BankCore.Models
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le mot de passe doit être composé de 8 chiffres")]
         public string password { get; set; }
 
+        public bool canVir { get; set; }
     }
 }
