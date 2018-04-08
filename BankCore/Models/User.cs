@@ -11,11 +11,11 @@ namespace BankCore.Models
     {
         [StringLength(50, ErrorMessage = "Le nom doit contenir {1} caractères maximum.")]
         [Required]
-        public string firstName { get; set; }
+        public string firstname { get; set; }
 
         [StringLength(50, ErrorMessage = "Le nom doit contenir {1} caractères maximum.")]
         [Required]
-        public string lastName { get; set; }
+        public string lastname { get; set; }
     
         [DataType(DataType.EmailAddress)]
         [Required]

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
 
+
 namespace BankCore.Controllers
 {
     [Produces("application/json")]
@@ -22,9 +23,12 @@ namespace BankCore.Controllers
 
         // GET: api/Mouvements
         [HttpGet]
-        public IEnumerable<Mouvement> GetMouvements()
+        public IEnumerable<Mouvement> GetMouvements([FromQuery] Guid? compte_id)
         {
-            return _context.Mouvements;
+            if (compte_id != null)
+                return _context.Mouvements.Where(m => m.compte_id == compte_id);
+            else
+                return _context.Mouvements;
         }
 
         // GET: api/Mouvements/5

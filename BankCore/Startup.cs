@@ -12,6 +12,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace BankCore
 {
@@ -27,6 +29,11 @@ namespace BankCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -51,10 +58,9 @@ namespace BankCore
                                     ValidateIssuerSigningKey = true,
                     };
                 });
-            services.AddCors();
             services.AddMvc();
 
-           services.AddDbContext<BankCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankCoreContext")));  
+            services.AddDbContext<BankCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BankCoreContext")));  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,12 +71,8 @@ namespace BankCore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAll");
             app.UseAuthentication();  // Auth call
-            app.UseCors(builder => builder
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
             app.UseMvc();
         }
     }

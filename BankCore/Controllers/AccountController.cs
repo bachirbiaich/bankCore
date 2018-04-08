@@ -5,8 +5,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BankCore.Models;
+using BankCore.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
@@ -14,27 +16,35 @@ namespace BankCore.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly BankCoreContext _context;
+
+        public AccountController(BankCoreContext context)
+        {
+            _context = context;
+        }
+        
         //Création 2 users
         private List<User> people = new List<User>
         {
-            new User { lastName="Frfr", firstName="Frfr", email="fr@fr.fr", password="frfr" }
+            new User { lastname="Frfr", firstname="Frfr", email="fr@fr.fr", password="12345678" }
         };
 
         [HttpPost("/login")]
-        public async Task Token()
+        public async Task Token([FromBody] User userBody)
         {
-            var lastName = Request.Form["lastName"];
-            var firstName = Request.Form["firstName"];
-            var email = Request.Form["email"];
-            var password = Request.Form["password"];
+            var email = userBody.email;
+            var password = userBody.password.Encrypt();
 
-            var identity = GetIdentity(email, password);
-            if (identity == null)
+            var user = await _context.Users.SingleOrDefaultAsync(m => m.email == email && m.password == password);
+
+            if (user == null)
             {
                 Response.StatusCode = 400;
                 await Response.WriteAsync("Invalid email or password.");
                 return;
             }
+
+            var identity = GetIdentity(user);
 
             var now = DateTime.UtcNow;
             // Création d'un token JWT
@@ -49,8 +59,8 @@ namespace BankCore.Controllers
 
             var response = new
             {
-                access_token = encodedJwt,
-                email = identity.Name
+                token = encodedJwt,
+                user = user
             };
 
             // Response sérialisation
@@ -58,23 +68,16 @@ namespace BankCore.Controllers
             await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
 
-        private ClaimsIdentity GetIdentity(string email, string password)
+        private ClaimsIdentity GetIdentity(User user)
         {
-            User user = people.FirstOrDefault(x => x.email == email && x.password == password);
-            if (user != null)
+            var claims = new List<Claim>
             {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.email)
-                };
-                ClaimsIdentity claimsIdentity =
-                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                    ClaimsIdentity.DefaultRoleClaimType);
-                return claimsIdentity;
-            }
-
-            // si aucun utilisateur n'est trouvé
-            return null;
+               new Claim(ClaimsIdentity.DefaultNameClaimType, user.email)
+            };
+            ClaimsIdentity claimsIdentity =
+            new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType);
+            return claimsIdentity;
         }
     }
 }
