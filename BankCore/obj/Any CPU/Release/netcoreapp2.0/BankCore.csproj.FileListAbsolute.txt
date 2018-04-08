@@ -1,0 +1,11 @@
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\bin\Any CPU\Release\netcoreapp2.0\BankCore.deps.json
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\bin\Any CPU\Release\netcoreapp2.0\BankCore.runtimeconfig.json
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\bin\Any CPU\Release\netcoreapp2.0\BankCore.runtimeconfig.dev.json
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\bin\Any CPU\Release\netcoreapp2.0\BankCore.dll
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\bin\Any CPU\Release\netcoreapp2.0\BankCore.pdb
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Any CPU\Release\netcoreapp2.0\BankCore.csprojResolveAssemblyReference.cache
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Any CPU\Release\netcoreapp2.0\BankCore.csproj.CoreCompileInputs.cache
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Any CPU\Release\netcoreapp2.0\BankCore.AssemblyInfoInputs.cache
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Any CPU\Release\netcoreapp2.0\BankCore.AssemblyInfo.cs
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Any CPU\Release\netcoreapp2.0\BankCore.dll
+C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Any CPU\Release\netcoreapp2.0\BankCore.pdb
