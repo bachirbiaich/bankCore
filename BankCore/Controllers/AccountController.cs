@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using BankCore.Models;
 using BankCore.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,19 @@ namespace BankCore.Controllers
         {
             new User { lastname="Frfr", firstname="Frfr", email="fr@fr.fr", password="12345678" }
         };
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet("/isAnAdminLoggedIn")]
+        public async Task isAnAdminLoggedIn()
+        {
+            Response.StatusCode = 200;
+            var response = new
+            {
+                message = "OK"
+            };
+            Response.ContentType = "application/json";
+            await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
+        }
 
         [HttpPost("/login")]
         public async Task Token([FromBody] User userBody)
