@@ -50,7 +50,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Comptes/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCompte([FromRoute] Guid id, [FromBody] Compte compte)
         {
@@ -86,7 +86,7 @@ namespace BankCore.Controllers
         }
 
         // POST: api/Comptes
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> PostCompte([FromBody] Compte compte)
         {
@@ -102,7 +102,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Comptes/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompte([FromRoute] Guid id)
         {

@@ -23,7 +23,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Users
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
@@ -31,7 +31,7 @@ namespace BankCore.Controllers
         }
 
         // GET: api/Users/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser([FromRoute] Guid id)
         {
@@ -51,7 +51,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Users/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser([FromRoute] Guid id, [FromBody] User user)
         {
@@ -88,7 +88,7 @@ namespace BankCore.Controllers
         }
 
         // POST: api/Users
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> PostUser([FromBody] User user)
         {
@@ -104,7 +104,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Users/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser([FromRoute] Guid id)
         {

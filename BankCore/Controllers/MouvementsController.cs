@@ -53,7 +53,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Mouvements/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMouvement([FromRoute] Guid id, [FromBody] Mouvement mouvement)
         {
@@ -89,7 +89,7 @@ namespace BankCore.Controllers
         }
 
         // POST: api/Mouvements
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> PostMouvement([FromBody] Mouvement mouvement)
         {
@@ -105,7 +105,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Mouvements/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMouvement([FromRoute] Guid id)
         {
