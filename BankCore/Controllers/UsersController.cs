@@ -89,24 +89,31 @@ namespace BankCore.Controllers
         }
 
         // PATCH: api/Users/5
+        [Authorize(Roles = "Administrator")]
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchUser([FromRoute] Guid id, [FromBody] User user)
+        public async Task<IActionResult> PatchUser([FromRoute] Guid id, [FromBody] JsonPatchDocument<User> userPatch)
         {
-            var patched = user.Copy();
-            user.ApplyTo(patched, ModelState);
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            var user = await _context.Users.SingleOrDefaultAsync(m => m._id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+
+            userPatch.ApplyTo(user, ModelState);
 
             if (!ModelState.IsValid)
             {
                 return new BadRequestObjectResult(ModelState);
             }
 
-            var model = new
-            {
-                original = user,
-                patched = patched
-            };
-
-            return Ok(model);
+            return Ok(user);
         }
 
 
