@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
 using BankCore.Utils;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace BankCore.Controllers
 {
@@ -86,6 +87,28 @@ namespace BankCore.Controllers
 
             return NoContent();
         }
+
+
+        [HttpPatch]
+        public async Task<IActionResult> PatchUser([FromRoute] Guid id, [FromBody] User user)
+        {
+            var patched = user.Copy();
+            user.ApplyTo(patched, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            var model = new
+            {
+                original = user,
+                patched = patched
+            };
+
+            return Ok(model);
+        }
+
 
         // POST: api/Users
         [Authorize(Roles = "Administrator")]
