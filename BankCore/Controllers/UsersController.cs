@@ -88,8 +88,8 @@ namespace BankCore.Controllers
             return NoContent();
         }
 
-
-        [HttpPatch]
+        // PATCH: api/Users/5
+        [HttpPatch("{id}")]
         public async Task<IActionResult> PatchUser([FromRoute] Guid id, [FromBody] User user)
         {
             var patched = user.Copy();

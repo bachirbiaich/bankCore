@@ -31,5 +31,6 @@ namespace BankCore.Models
         public string password { get; set; }
 
         public bool canVir { get; set; }
+
     }
 }

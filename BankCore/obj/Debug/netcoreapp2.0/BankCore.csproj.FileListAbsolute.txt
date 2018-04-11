@@ -20,3 +20,9 @@ C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankC
 C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.AssemblyInfo.cs
 C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.dll
 C:\Users\Bachir\Documents\GitHub\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.pdb
+D:\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.csprojResolveAssemblyReference.cache
+D:\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.csproj.CoreCompileInputs.cache
+D:\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.AssemblyInfoInputs.cache
+D:\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.AssemblyInfo.cs
+D:\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.dll
+D:\bankCore\BankCore\obj\Debug\netcoreapp2.0\BankCore.pdb
