@@ -113,6 +113,16 @@ namespace BankCore.Controllers
                 return new BadRequestObjectResult(ModelState);
             }
 
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
             return Ok(user);
         }
 
