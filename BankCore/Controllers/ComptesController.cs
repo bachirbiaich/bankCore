@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace BankCore.Controllers
 {
@@ -26,7 +27,8 @@ namespace BankCore.Controllers
         [HttpGet]
         public IEnumerable<Compte> GetComptes()
         {
-            return _context.Comptes;
+            string currentUserId = User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value;
+            return HttpContext.User.IsInRole("Administrator") ?  _context.Comptes : _context.Comptes.Where(c => c.owner_id.ToString() == currentUserId);
         }
 
         // GET: api/Comptes/5
@@ -39,7 +41,9 @@ namespace BankCore.Controllers
                 return BadRequest(ModelState);
             }
 
-            var compte = await _context.Comptes.SingleOrDefaultAsync(m => m._id == id);
+            string currentUserId = User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value;
+
+            var compte = HttpContext.User.IsInRole("Administrator") ? await _context.Comptes.SingleOrDefaultAsync(m => m._id == id) : await _context.Comptes.SingleOrDefaultAsync(m => m._id == id && m.owner_id.ToString() == currentUserId);
 
             if (compte == null)
             {

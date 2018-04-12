@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankCore.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace BankCore.Controllers
 {
@@ -26,7 +27,8 @@ namespace BankCore.Controllers
         [HttpGet]
         public IEnumerable<Virement> GetVirements()
         {
-            return _context.Virements;
+            string currentUserId = User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value;
+            return HttpContext.User.IsInRole("Administrator") ? _context.Virements : _context.Virements.Where(v => v.sender_id.ToString() == currentUserId);
         }
 
         // GET: api/Virements/5
@@ -39,7 +41,8 @@ namespace BankCore.Controllers
                 return BadRequest(ModelState);
             }
 
-            var virement = await _context.Virements.SingleOrDefaultAsync(m => m._id == id);
+            string currentUserId = User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value;
+            var virement = HttpContext.User.IsInRole("Administrator") ? await _context.Virements.SingleOrDefaultAsync(m => m._id == id) : await _context.Virements.SingleOrDefaultAsync(m => m._id == id && m.sender_id.ToString() == currentUserId);
 
             if (virement == null)
             {
@@ -50,7 +53,7 @@ namespace BankCore.Controllers
         }
 
         // PUT: api/Virements/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVirement([FromRoute] Guid id, [FromBody] Virement virement)
         {
@@ -95,6 +98,14 @@ namespace BankCore.Controllers
                 return BadRequest(ModelState);
             }
 
+            string currentUserId = User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value;
+            var user = await _context.Users.SingleOrDefaultAsync(m => m._id.ToString() == currentUserId);
+
+            if (user != null)
+                return BadRequest();
+            if (!user.canVir)
+                return Unauthorized();
+
             _context.Virements.Add(virement);
             await _context.SaveChangesAsync();
 
@@ -102,7 +113,7 @@ namespace BankCore.Controllers
         }
 
         // DELETE: api/Virements/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVirement([FromRoute] Guid id)
         {

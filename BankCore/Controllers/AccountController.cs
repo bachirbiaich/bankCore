@@ -86,7 +86,7 @@ namespace BankCore.Controllers
         {
             var claims = new List<Claim>
             {
-               new Claim(ClaimsIdentity.DefaultNameClaimType, user.email)
+               new Claim(ClaimsIdentity.DefaultNameClaimType, user._id.ToString()),
             };
             if (user.email == "admin@ynov.com")
                 claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
